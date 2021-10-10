@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    form input,
+    form select {
+      background-color: papayawhip;
+      width: 160px;
+      display: flex;
+    }
+
+    button {
+
+      font-size: 14px;
+      color: rebeccapurple;
+      background-color: dimgray;
+      border-radius: 5px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <label>
+      Nome
+      <input type="text" name="nome">
+    </label>
+    <label>
+      Último Nome
+      <input type="text" name="sobrenome">
+    </label>
+    <label>
+      Gênero
+      <select name="genero">
+        <option value="m">Masculino</option>
+        <option value="f">Feminino</option>
+        <option value="nb">Não Binário</option>
+        <option value="o">Outros</option>
+      </select>
+
+      <fieldset>
+        <legend>Pedido</legend>
+
+        <section>
+          Tamanho da Pizza
+
+          <label>
+            <input type="radio" name="tamanho" id="p">Pequena
+          </label>
+
+          <label>
+            <input type="radio" name="tamanho" id="M"> Média
+          </label>
+
+          <label>
+            <input type="radio" name="tamanho" id="G">Grande
+          </label>
+
+          <label>
+            <input type="radio" name="tamanho" id="gg">Gigante
+          </label>
+        </section>
+
+      </fieldset>
+
+    </label>
+    <footer>
+      <button type="reset">Limpar</button>
+      <button type="submit">Enviar</button>
+    </footer>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+    console.log(form);
+
+    form.onsubmit = (event) => {
+      event.preventDefault();
+
+      const data = new FormData(event.target);
+      console.log(data);
+
+      data.forEach((value, key) => {
+        console.log(`${key}, ${value}`);
+      })
+
+      const entries = data.entries();
+      const pedido = Object.fromEntries(entries);
+      console.log(pedido);
+    }
+
+
+
+  </script>
+</body>
+
+</html>
